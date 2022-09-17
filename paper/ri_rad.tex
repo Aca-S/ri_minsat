@@ -1,0 +1,49 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsthm}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definicija}[section]
+
+\title{Heurističko rešavanje problema minimalnog broja zadovoljivih formula}
+\author{
+	Aleksa Papić
+	\and
+	Aleksandar Stefanović
+}
+\date{17. septembar 2022.}
+
+\renewcommand*\contentsname{Sadržaj}
+\renewcommand*\tablename{Tabela}
+\renewcommand*\figurename{Slika}
+\renewcommand*\refname{Reference}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\section{Uvod}
+
+Problem minimalne zadovoljivosti iskazne formule $f$ (eng. MIN-SAT) je optimizaciona varijanta problema zadovoljivosti (eng. SAT) u kojoj se traži valuacija $v$ takva da je broj klauza formule $f$ tačnih u valuaciji $v$ minimalan. Poznato je da je ovaj problem NP-težak \cite{1}.
+
+U ovom radu ćemo posmatrati naredno modifikaciju ovog problema datu u \cite{2}:
+\begin{definition}[Problem minimalnog broja zadovoljivih formula]
+\label{def 1.1}
+Neka je dat par $(U, C)$ gde je $U$ skup iskaznih promenljivih, a $C$ skup iskaznih formula u 3KNF (eng. 3CNF). Rešenje problema minimalnog broja zadovoljivih formula nad $(U, C)$ je valuacija $v$ za promenljive iz skupa $U$ takva da je broj formula iz skupa $C$ zadovoljenih tom valuacijom minimalan.
+\end{definition}
+
+Iz definicije se može zaključiti da svaka instanca MIN-SAT problema odgovara nekoj instanci problema \ref{def 1.1} u kojoj je broj klauza svake formule iz $C$ jednak jedan.
+
+Razmotrićemo i uporediti performanse jednog genetskog algoritma i više varijanti memetičkih algoritama za rešavanje problema \ref{def 1.1}.
+
+\begin{thebibliography}{9}
+\bibitem{1}
+Rajeev Kohlit, Ramesh Krishnamurti, Prakash Mirchandani, \emph{The minimum satisfiability problem}. SIAM J. Discrete Math. Vol. 7, No. 2, pp. 275-283, May 1994.
+\bibitem{2}
+Viggo Kann, \emph{Polynomially bounded minimization problems that are hard to approximate}. Nordic Journal of Computing 1(1994), 317–331.
+\end{thebibliography}
+
+\end{document}
