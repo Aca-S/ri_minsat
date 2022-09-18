@@ -39,6 +39,39 @@ Iz definicije se može zaključiti da svaka instanca MIN-SAT problema odgovara n
 
 Razmotrićemo i uporediti performanse jednog genetskog algoritma i više varijanti memetičkih algoritama za rešavanje problema \ref{def 1.1}.
 
+\section{Opis algoritama}
+
+U ovom poglavlju ćemo dati opis nekoliko pristupa u rešavanju problema \ref{def 1.1}.
+
+\subsection{Kodiranje jedinki}
+
+Pre razmatranja konkretnih algoritama, opisaćemo način kodiranja jedinki, tj. način predstavljanja konkretnih valuacija u okviru problema \ref{def 1.1}.
+
+\begin{definition}[Kodiranje jedinki]
+\label{def 2.1}
+Neka je dat par $(U, C)$ kao u \ref{def 1.1} i neka je skup promenljivih $U = \{p_1, ..., p_n\}$. Tada je valuacija $v$ nad skupom promenljivih $U$ niz binarnih brojeva $(x_1, ..., x_n) \in \{0, 1\}^n$ takav da $x_i$ odgovara konkretizovanoj vrednosti promenljive $p_i$.
+\end{definition}
+
+\subsection{Ocena kvaliteta jedinki}
+
+Ocenu kvaliteta jedinki u okviru problema \ref{def 1.1} ćemo zadati preko tzv. fitnes funkcije jedinke.
+
+\begin{definition}[Fitnes funkcija]
+\label{def 2.2}
+Neka je $v$ neka jedinka, tj. konkretna valuacija (\ref{def 2.1}) za par $(U, C)$ definisan kao u problemu \ref{def 1.1}. Fitnes funkcija $fitness : \{0, 1\}^n \rightarrow (0, 1]$ je zadata sa $fitness(v) = \frac{1}{sat(v) + 1}$, gde je $sat(v)$ broj iskaznih formula iz $C$ zadovoljenih u valuaciji $v$.
+\end{definition}
+
+Iz date definicije se može zaključiti da je jedinka $v_1$ bolja od jedinke $v_2$ u kontekstu problema \ref{def 1.1} ako i samo ako je $fitness(v_1) > fitness(v_2)$.
+
+Broj zadovoljenih formula u valuaciji $v$ se može dobiti kao $sat(v) = \frac{1}{fitness(v)} - 1$, ali se zbog računa u pokretnom zarezu predlaže zaokruživanje na najbliži ceo broj, tj.
+$sat(v) = round(\frac{1}{fitness(v)} - 1)$.
+
+\subsection{Rešavanje grubom silom}
+
+\subsection{Rešavanje genetskim algoritmom}
+
+\subsection{Rešavanje memetskim algoritmom}
+
 \begin{thebibliography}{9}
 \bibitem{1}
 Rajeev Kohlit, Ramesh Krishnamurti, Prakash Mirchandani, \emph{The minimum satisfiability problem}. SIAM J. Discrete Math. Vol. 7, No. 2, pp. 275-283, May 1994.
