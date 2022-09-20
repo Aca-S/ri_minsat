@@ -21,6 +21,8 @@
 \renewcommand*\refname{Reference}
 \renewcommand*\algorithmcfname{Algoritam}
 
+\sloppy
+
 \RestyleAlgo{ruled}
 
 \begin{document}
@@ -28,6 +30,8 @@
 \maketitle
 
 \tableofcontents
+
+\newpage
 
 \section{Uvod}
 
@@ -135,9 +139,79 @@ Uloga operatora optimizacije je da se potencijalno poboljša svaka pojedinačna 
 
 \paragraph{Lokalna pretraga kao operator optimizacije}
 
+Najjednostavnija S-metaheuristika koju ćemo koristiti je lokalna pretraga. Kriterijum zaustavljanja je broj iteracija koji se prosleđuje kao parametar algoritmu.
+
+\begin{algorithm}
+\caption{Lokalna pretraga}
+\label{alg:3}
+\KwData{$pocetna\ jedinka$}
+\KwResult{$najbolja\ jedinka$}
+$trenutna\ jedinka \gets pocetna\ jedinka$\;
+\While{nije ispunjen uslov zaustavljanja}{
+	$nova\ jedinka \gets invertuj(trenutna\ jedinka)$\;
+	\If{fitness(nova jedinka) > fitness(trenutna jedinka)}{
+		$trenutna\ jedinka \gets nova\ jedinka$\;
+	}
+}
+$najbolja\ jedinka \gets trenutna\ jedinka$\;
+\end{algorithm}
+
 \paragraph{Simulirano kaljenje kao operator optimizacije}
 
+Verovatnoća kaljenja se računa po formuli $\frac{1}{t^s}$, gde se broj $s$ prosleđuje kao parametar algoritma. Kriterijum zaustavljanja je broj iteracija koji se takođe prosleđuje kao parametar.
+
+\begin{algorithm}
+\caption{Simulirano kaljenje}
+\label{alg:4}
+\KwData{$pocetna\ jedinka$}
+\KwResult{$najbolja\ jedinka$}
+$trenutna\ jedinka \gets pocetna\ jedinka$\;
+$najbolja\ jedinka \gets pocetna\ jedinka$\;
+$t \gets 1$\;
+\While{nije ispunjen uslov zaustavljanja}{
+	$nova\ jedinka \gets invertuj(trenutna\ jedinka)$\;
+	\eIf{fitness(nova jedinka) > fitness(trenutna jedinka)}{
+		$trenutna\ jedinka \gets nova\ jedinka$\;
+		\If{fitness(nova jedinka) > fitness(najbolja jedinka)}{
+			$najbolja\ jedinka \gets nova\ jedinka$\;		
+		}
+	}{
+		$p \gets \frac{1}{t^s}$\;
+		\If{$q \in U(0, 1) < p$}{
+			$trenutna\ jedinka \gets nova\ jedinka$\;
+		}
+	}
+	$t \gets t + 1$\;
+}
+\end{algorithm}
+
 \paragraph{Redukovana metoda promenljivih okolina kao operator optimizacije}
+
+Okolina veličine $k$ neke jedinke $v$ predstavlja skup jedinki koje se mogu dobiti invertovanjem tačno $k$ bitova u reprezentaciji jedinke $v$. Maksimalna veličina okoline se prosleđuje kao parametar algoritma, kao i broj iteracija algoritma koji predstavlja kriterijum zaustavljanja.
+
+\begin{algorithm}
+\caption{Redukovana metoda promenljivih okolina}
+\label{alg:5}
+\KwData{$pocetna\ jedinka$}
+\KwResult{$najbolja\ jedinka$}
+$trenutna\ jedinka \gets pocetna\ jedinka$\;
+\While{nije ispunjen uslov zaustavljanja}{
+	\For{$k \gets 1$ \KwTo $maks.\ okolina$}{
+		$nova\ jedinka \gets invertuj(trenutna\ jedinka, k)$\;
+		\If{fitness(nova jedinka) > fitness(trenutna jedinka)}{
+			$trenutna\ jedinka \gets nova\ jedinka$\;
+			\textbf{break}\;
+		}
+	}
+}
+$najbolja\ jedinka \gets trenutna\ jedinka$\;
+\end{algorithm}
+
+\section{Rezultati}
+
+\section{Zaključak}
+
+\newpage
 
 \begin{thebibliography}{9}
 \bibitem{1}
