@@ -2,6 +2,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{amsthm}
+\usepackage{algorithm2e}
 
 \theoremstyle{definition}
 \newtheorem{definition}{Definicija}[section]
@@ -18,6 +19,10 @@
 \renewcommand*\tablename{Tabela}
 \renewcommand*\figurename{Slika}
 \renewcommand*\refname{Reference}
+\renewcommand*\algorithmcfname{Algoritam}
+
+
+\RestyleAlgo{ruled}
 
 \begin{document}
 
@@ -66,9 +71,42 @@ Iz date definicije se može zaključiti da je jedinka $v_1$ bolja od jedinke $v_
 Broj zadovoljenih formula u valuaciji $v$ se može dobiti kao $sat(v) = \frac{1}{fitness(v)} - 1$, ali se zbog računa u pokretnom zarezu predlaže zaokruživanje na najbliži ceo broj, tj.
 $sat(v) = round(\frac{1}{fitness(v)} - 1)$.
 
-\subsection{Rešavanje grubom silom}
+\subsection{Rešavanje algoritmom grube sile}
+
+Naivni algoritam kojim se problem rešava grubom silom proverava sve moguće valuacije u problemu. Ukoliko je $U$ skup promenljivih u problemu \ref{def 1.1}, takvih valuacija je $2^{|U|}$. Iako je egzaktan, ovaj algoritam je praktično neprimenljiv za sve osim najmanje probleme zbog svoje eksponencijalne složenosti.
 
 \subsection{Rešavanje genetskim algoritmom}
+
+Prvi heuristički algoritam koji ćemo upotrebiti je genetski algoritam. Opisaćemo operatore koje ćemo koristiti, kao i uslov zaustavljanja. Detaljan opis algoritma i mogućih modifikacija se može videti u \cite{3}.
+
+\begin{algorithm}
+\caption{Genetski algoritam}
+\label{alg:1}
+$t \gets 0$\;
+$P_0 \gets generisi\ populaciju()$\;
+\While{nije ispunjen uslov zaustavljanja}{
+	$P_{sel} \gets selekcija(P_t)$\;
+	$P_{t + 1} \gets ukrstanje(P_{sel})$\;
+	$P_{t + 1} \gets mutacija(P_{t + 1})$\;
+	$t \gets t + 1$\;
+}
+\end{algorithm}
+
+\subsubsection{Operator selekcije}
+
+Za selekciju jedinki za reprodukciju koristićemo ruletsku selekciju. Verovatnoća izbora neke jedinke $v$ jednaka je $\frac{fitness(v)}{\sum_{u \in P_t} fitness(u)}$, gde je $P_t$ populacija jedinki u tekućoj iteraciji algoritma \ref{alg:1}.
+
+\subsubsection{Operator ukrštanja}
+
+Za ukrštanje jedinki prilikom reprodukcije koristićemo jednopoziciono ukrštanje. Dve jedinke, $r_1 = (x_1, ..., x_n)$ i $r_2 = (y_1, ..., y_n)$, izabrane za roditelje u fazi selekcije kreiraće dva potomka, $p_1$ i $p_2$, izborom \emph{tačke preseka} $k$ iz diskretne uniformne raspodele nad vrednostima $\{1, ..., n\}$. Tada će važiti $p_1 = (x_1, ..., x_k, y_{k + 1}, ..., y_n)$ i $p_2 = (y_1, ..., y_k, x_{k + 1}, ..., x_n)$.
+
+\subsubsection{Operator mutacije}
+
+Operator mutacije koji ćemo koristiti sa nekom verovatnoćom $p \in U(0, 1)$, koja se zadaje kao parametar algoritma \ref{alg:1}, invertuje jedan od bitova jedinke nad kojom se sprovodi mutacija.
+
+\subsubsection{Uslov zaustavljanja}
+
+Kao uslov zaustavljanja koristićemo maksimalni broj iteracija algoritma \ref{alg:1}, kao i maksimalni broj iteracija bez promene u najboljoj jedinki. Obe vrednosti se zadaju kao parametri algoritma.
 
 \subsection{Rešavanje memetskim algoritmom}
 
@@ -77,6 +115,8 @@ $sat(v) = round(\frac{1}{fitness(v)} - 1)$.
 Rajeev Kohlit, Ramesh Krishnamurti, Prakash Mirchandani, \emph{The minimum satisfiability problem}. SIAM J. Discrete Math. Vol. 7, No. 2, pp. 275-283, May 1994.
 \bibitem{2}
 Viggo Kann, \emph{Polynomially bounded minimization problems that are hard to approximate}. Nordic Journal of Computing 1(1994), 317–331.
+\bibitem{3}
+Engelbrecht, Andries P. \emph{Computational intelligence : an introduction / Andries P. Engelbrecht. – 2nd ed.}
 \end{thebibliography}
 
 \end{document}
