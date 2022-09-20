@@ -21,7 +21,6 @@
 \renewcommand*\refname{Reference}
 \renewcommand*\algorithmcfname{Algoritam}
 
-
 \RestyleAlgo{ruled}
 
 \begin{document}
@@ -77,7 +76,7 @@ Naivni algoritam kojim se problem rešava grubom silom proverava sve moguće val
 
 \subsection{Rešavanje genetskim algoritmom}
 
-Prvi heuristički algoritam koji ćemo upotrebiti je genetski algoritam. Opisaćemo operatore koje ćemo koristiti, kao i uslov zaustavljanja. Detaljan opis algoritma i mogućih modifikacija se može videti u \cite{3}.
+Prvi heuristički algoritam koji ćemo razmotriti je genetski algoritam. Opisaćemo operatore koje ćemo koristiti, kao i uslov zaustavljanja. Detaljan opis algoritma i mogućih modifikacija se može videti u \cite{3}.
 
 \begin{algorithm}
 \caption{Genetski algoritam}
@@ -110,6 +109,36 @@ Kao uslov zaustavljanja koristićemo maksimalni broj iteracija algoritma \ref{al
 
 \subsection{Rešavanje memetskim algoritmom}
 
+Još jedan tip algoritama koje ćemo razmotriti su memetski algoritmi. Ovi algoritmi predstavljaju kombinaciju više različitih heurističkih pristupa rešavanju problema \cite{4}.
+
+Konkretna implementacija koju ćemo razmotriti kombinuje genetski algoritam opisan u prethodnom poglavlju sa nekom S-metaheuristikom, a mi ćemo ih obraditi tri. Sledi uopšteni algoritam:
+
+\begin{algorithm}
+\caption{Memetski algoritam}
+\label{alg:2}
+$t \gets 0$\;
+$P_0 \gets generisi\ populaciju()$\;
+\While{nije ispunjen uslov zaustavljanja}{
+	$P_{sel} \gets selekcija(P_t)$\;
+	$P_{t + 1} \gets ukrstanje(P_{sel})$\;
+	$P_{t + 1} \gets mutacija(P_{t + 1})$\;
+	$P_{t + 1} \gets optimizacija(P_{t + 1})$\;
+	$t \gets t + 1$\;
+}
+\end{algorithm}
+
+Jedina razlika u odnosu na genetski algoritam \ref{alg:1} je novouvedeni operator optimizacije. Svi ostali operatori su implementirani identično kao u prethodnom poglavlju.
+
+\subsubsection{Operator optimizacije}
+
+Uloga operatora optimizacije je da se potencijalno poboljša svaka pojedinačna jedinka iz novonastale populacije. Ovo se suštinski postiže pozivanjem neke S-metaheuristike, koja je zadata kao parametar algoritma, nad svakom jedinkom.
+
+\paragraph{Lokalna pretraga kao operator optimizacije}
+
+\paragraph{Simulirano kaljenje kao operator optimizacije}
+
+\paragraph{Redukovana metoda promenljivih okolina kao operator optimizacije}
+
 \begin{thebibliography}{9}
 \bibitem{1}
 Rajeev Kohlit, Ramesh Krishnamurti, Prakash Mirchandani, \emph{The minimum satisfiability problem}. SIAM J. Discrete Math. Vol. 7, No. 2, pp. 275-283, May 1994.
@@ -117,6 +146,8 @@ Rajeev Kohlit, Ramesh Krishnamurti, Prakash Mirchandani, \emph{The minimum satis
 Viggo Kann, \emph{Polynomially bounded minimization problems that are hard to approximate}. Nordic Journal of Computing 1(1994), 317–331.
 \bibitem{3}
 Engelbrecht, Andries P. \emph{Computational intelligence : an introduction / Andries P. Engelbrecht. – 2nd ed.}
+\bibitem{4}
+Pablo Moscato, Carlos Cotta, Alexandre Mendes, \emph{Memetic Algorithms}. 
 \end{thebibliography}
 
 \end{document}
