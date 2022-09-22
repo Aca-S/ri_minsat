@@ -3,6 +3,8 @@
 \usepackage[T1]{fontenc}
 \usepackage{amsthm}
 \usepackage{algorithm2e}
+\usepackage{multirow}
+\usepackage{adjustbox}
 
 \theoremstyle{definition}
 \newtheorem{definition}{Definicija}[section]
@@ -208,6 +210,56 @@ $najbolja\ jedinka \gets trenutna\ jedinka$\;
 \end{algorithm}
 
 \section{Rezultati}
+
+\begin{table}
+\begin{adjustbox}{width=\columnwidth,center}
+\begin{tabular}{ |c|c|c|c|c|c|c| }
+\hline
+Instanca & small1-50-7-1 & small2-50-7-2 & small3-50-10-1 & small4-50-10-3 & small5-50-15-1 & small6-50-15-4 \\
+\hline
+|U| & 7 & 7 & 10 & 10 & 15 & 15 \\
+\hline
+|C| & 50 & 50 & 50 & 50 & 50 & 50 \\
+\hline
+BF opt. & 40 & 29 & 37 & 23 & 34 & 17 \\
+\hline
+GA najbolje & 40 & 29 & 37 & 23 & 34 & 17 \\
+\hline
+GA prosek & 40.0 & 29.0 & 37.17 & 23.1 & 34.38 & 18.37 \\
+\hline
+GA najgore & 40 & 29 & 39 & 27 & 36 & 21 \\
+\hline
+MA(LS) najbolje & 40 & 29 & 37 & 23 & 34 & 17 \\
+\hline
+MA(LS) prosek & 40 & 29.0 & 37.03 & 23.0 & 34.43 & 18.19 \\
+\hline
+MA(LS) najgore & 40 & 29 & 38 & 23 & 36 & 20 \\
+\hline
+MA(SA) najbolje & 40 & 29 & 37 & 23 & 34 & 17 \\
+\hline
+MA(SA) prosek & 40.0 & 29.0 & 37.01 & 23.0 & 34.56 & 18.17 \\
+\hline
+MA(SA) najgore & 40 & 29 & 38 & 23 & 36 & 20 \\
+\hline
+MA(RVNS) najbolje & 40 & 29 & 37 & 23 & 34 & 17 \\
+\hline
+MA(RVNS) prosek & 40.0 & 29.0 & 37.0 & 23.0 & 34.34 & 17.83 \\
+\hline
+MA(RVNS) najgore & 40 & 29 & 37 & 23 & 35 & 19 \\
+\hline
+t BF & < 0.01 & 0.01 & 0.04 & 0.07 & 1.18 & 2.70 \\
+\hline
+t GA & 0.03 & 0.06 & 0.05 & 0.08 & 0.05 & 0.11 \\
+\hline
+t MA(LS) & 0.11 & 0.16 & 0.13 & 0.24 & 0.15 & 0.34 \\
+\hline
+t MA(SA) & 0.11 & 0.16 & 0.14 & 0.24 & 0.16 & 0.34 \\
+\hline
+t MA(RVNS) & 0.24 & 0.35 & 0.26 & 0.46 & 0.32 & 0.72 \\
+\hline
+\end{tabular}
+\end{adjustbox}
+\end{table}
 
 \section{Zaključak}
 
