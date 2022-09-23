@@ -5,6 +5,7 @@
 \usepackage{algorithm2e}
 \usepackage{multirow}
 \usepackage{adjustbox}
+\usepackage{float}
 
 \theoremstyle{definition}
 \newtheorem{definition}{Definicija}[section]
@@ -143,7 +144,9 @@ Uloga operatora optimizacije je da se potencijalno poboljša svaka pojedinačna 
 
 Najjednostavnija S-metaheuristika koju ćemo koristiti je lokalna pretraga. Kriterijum zaustavljanja je broj iteracija koji se prosleđuje kao parametar algoritmu.
 
-\begin{algorithm}
+\vspace{5mm}
+
+\begin{algorithm}[H]
 \caption{Lokalna pretraga}
 \label{alg:3}
 \KwData{$pocetna\ jedinka$}
@@ -162,7 +165,9 @@ $najbolja\ jedinka \gets trenutna\ jedinka$\;
 
 Verovatnoća kaljenja se računa po formuli $\frac{1}{t^s}$, gde se broj $s$ prosleđuje kao parametar algoritma. Kriterijum zaustavljanja je broj iteracija koji se takođe prosleđuje kao parametar.
 
-\begin{algorithm}
+\vspace{5mm}
+
+\begin{algorithm}[H]
 \caption{Simulirano kaljenje}
 \label{alg:4}
 \KwData{$pocetna\ jedinka$}
@@ -191,7 +196,9 @@ $t \gets 1$\;
 
 Okolina veličine $k$ neke jedinke $v$ predstavlja skup jedinki koje se mogu dobiti invertovanjem tačno $k$ bitova u reprezentaciji jedinke $v$. Maksimalna veličina okoline se prosleđuje kao parametar algoritma, kao i broj iteracija algoritma koji predstavlja kriterijum zaustavljanja.
 
-\begin{algorithm}
+\vspace{5mm}
+
+\begin{algorithm}[H]
 \caption{Redukovana metoda promenljivih okolina}
 \label{alg:5}
 \KwData{$pocetna\ jedinka$}
@@ -211,7 +218,14 @@ $najbolja\ jedinka \gets trenutna\ jedinka$\;
 
 \section{Rezultati}
 
-\begin{table}
+Svi testovi su izvršeni implementacijom algoritama u programskom jeziku Python na Intel Xeon procesoru sa radnim taktom 2.20GHz.
+
+\subsection{Male instance}
+
+Testovi iz skupa malih instanci su izvršeni 100 puta sa istim parametrima. Maksimalan broj generacija svih heurističkih algoritama je 100, maksimalan broj generacija bez poboljšanja najbolje jedinke je 30 i veličina populacije je 20. Za elitizam je uzeto 10\% populacije, verovatnoća mutacije je 0.05, broj iteracija optimizacije memetskih algoritama je 10, frekvencija 3, a maksimalna veličina okoline u redukovanoj metodi promenljivih okolina 3.
+
+\begin{table}[H]
+\label{tab:1}
 \begin{adjustbox}{width=\columnwidth,center}
 \begin{tabular}{ |c|c|c|c|c|c|c| }
 \hline
@@ -259,9 +273,15 @@ t MA(RVNS) & 0.24 & 0.35 & 0.26 & 0.46 & 0.32 & 0.72 \\
 \hline
 \end{tabular}
 \end{adjustbox}
+\caption{Rezultati nad malim instancama}
 \end{table}
 
-\begin{table}
+\subsection{Srednje instance}
+
+Testovi iz skupa srednjih instanci su izvršeni 20 puta sa istim parametrima. Maksimalan broj generacija svih heurističkih algoritama je 500, maksimalan broj generacija bez poboljšanja najbolje jedinke je 50 i veličina populacije je 70. Za elitizam je uzeto 20\% populacije, verovatnoća mutacije je 0.05, broj iteracija optimizacije memetskih algoritama je 15, frekvencija 3, a maksimalna veličina okoline u redukovanoj metodi promenljivih okolina 3.
+
+\begin{table}[H]
+\label{tab:2}
 \begin{adjustbox}{width=\columnwidth,center}
 \begin{tabular}{ |c|c|c|c| }
 \hline
@@ -309,9 +329,15 @@ t MA(RVNS) & 17.49 & 35.20 & 44.72 \\
 \hline
 \end{tabular}
 \end{adjustbox}
+\caption{Rezultati nad srednjim instancama}
 \end{table}
 
-\begin{table}
+\subsection{Velike instance}
+
+Testovi iz skupa velikih instanci su izvršeni 10 puta sa istim parametrima. Maksimalan broj generacija svih heurističkih algoritama u slučaju instance large1-500-200-5 je 200, a u slučaju instance large2-300-300-5 je 350, maksimalan broj generacija bez poboljšanja najbolje jedinke je 70 i veličina populacije je 100. Za elitizam je uzeto 30\% populacije, verovatnoća mutacije je 0.05, broj iteracija optimizacije memetskih algoritama je 15, frekvencija 3, a maksimalna veličina okoline u redukovanoj metodi promenljivih okolina 3.
+
+\begin{table}[H]
+\label{tab:3}
 \begin{adjustbox}{width=\columnwidth,center}
 \begin{tabular}{ |c|c|c|c| }
 \hline
@@ -359,6 +385,7 @@ t MA(RVNS) & 206.92 & 227.04 \\
 \hline
 \end{tabular}
 \end{adjustbox}
+\caption{Rezultati nad velikim instancama}
 \end{table}
 
 \section{Zaključak}
