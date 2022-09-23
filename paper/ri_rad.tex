@@ -114,6 +114,10 @@ Operator mutacije koji ćemo koristiti sa nekom verovatnoćom $p \in U(0, 1)$, k
 
 Kao uslov zaustavljanja koristićemo maksimalni broj iteracija algoritma \ref{alg:1}, kao i maksimalni broj iteracija bez promene u najboljoj jedinki. Obe vrednosti se zadaju kao parametri algoritma.
 
+\subsubsection{Elitizam}
+
+U algoritmu ćemo koristiti elitizam, tj. određeni broj najboljih jedinki u svakoj generaciji neće biti zamenjen novonastalom generacijom. Procenat elitizma se zadaje kao parametar algoritma.
+
 \subsection{Rešavanje memetskim algoritmom}
 
 Još jedan tip algoritama koje ćemo razmotriti su memetski algoritmi. Ovi algoritmi predstavljaju kombinaciju više različitih heurističkih pristupa rešavanju problema \cite{4}.
@@ -138,7 +142,7 @@ Jedina razlika u odnosu na genetski algoritam \ref{alg:1} je novouvedeni operato
 
 \subsubsection{Operator optimizacije}
 
-Uloga operatora optimizacije je da se potencijalno poboljša svaka pojedinačna jedinka iz novonastale populacije. Ovo se suštinski postiže pozivanjem neke S-metaheuristike, koja je zadata kao parametar algoritma, nad svakom jedinkom.
+Uloga operatora optimizacije je da se potencijalno poboljšaju pojedinačne jedinke iz novonastale populacije. Ovo se suštinski postiže pozivanjem neke S-metaheuristike, koja je zadata kao parametar algoritma, nad svakom jedinkom ili nad određenim brojem njih. U ovom radu ćemo koristiti dodatan parametar frekvencije optimizacije $k$ kojim se uspostavlja optimizacija jedinki iz svake $k-te$ reprodukcije.
 
 \paragraph{Lokalna pretraga kao operator optimizacije}
 
@@ -218,7 +222,7 @@ $najbolja\ jedinka \gets trenutna\ jedinka$\;
 
 \section{Rezultati}
 
-Svi testovi su izvršeni implementacijom algoritama u programskom jeziku Python na Intel Xeon procesoru sa radnim taktom 2.20GHz.
+Svi testovi su izvršeni implementacijom algoritama u programskom jeziku Python na Intel Xeon procesoru sa radnim taktom 2.20GHz. Rešavanje algoritmom grube sile se vrši samo nad skupom malih instanci.
 
 \subsection{Male instance}
 
@@ -390,6 +394,12 @@ t MA(RVNS) & 206.92 & 227.04 \\
 
 \section{Zaključak}
 
+Iako je ideja bila obećavajuća, u ovom slučaju su se memetski algoritmi pokazali loše u odnosu na klasičan genetski algoritam. U slučaju malih instanci, svi heuristički algoritmi su uspevali da nađu optimalno rešenje u skoro svakom pokretanju. Za srednje i velike instance, genetski algoritam je uvek nadmašivao sve tri varijante memetskih algoritama, kako u nađenom rešenju, tako i u vremenu izvršavanja koje je višestruko manje.
+
+Što se tiče međusobnog poređenja tri varijante memetskih algoritama, najgore se pokazuje algoritam sa optimizacijom baziranom na redukovanoj metodi promenljivih okolina, dok su varijante bazirane na simuliranom kaljenju i na lokalnoj pretrazi dale slične rezultate.
+
+Potencijalan razlog za loše ponašanje memetskih algoritama u ovakvoj implementaciji je prebrza konvergencija ka nekom lokalnom optimumu usled dodatne optimizacije jedinki. Moguće rešenje za ovaj problem je upotreba naprednijih memetskih algoritama, poput onog opisanog u \cite{5}.
+
 \newpage
 
 \begin{thebibliography}{9}
@@ -401,6 +411,8 @@ Viggo Kann, \emph{Polynomially bounded minimization problems that are hard to ap
 Engelbrecht, Andries P. \emph{Computational intelligence : an introduction / Andries P. Engelbrecht. – 2nd ed.}
 \bibitem{4}
 Pablo Moscato, Carlos Cotta, Alexandre Mendes, \emph{Memetic Algorithms}. 
+\bibitem{5}
+Muzaffar Eusuff, Kevin Lansey, Fayzul Pasha, \emph{Shuffled frog-leaping algorithm: a memetic meta-heuristic for discrete optimization}. Engineering Optimization, volume 38, pages 129-154.
 \end{thebibliography}
 
 \end{document}
