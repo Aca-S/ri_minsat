@@ -1,0 +1,27 @@
+num_of_generations = 500
+max_without_improvement = 50
+population_size = 70
+mutation_probability = 0.5
+elitism=0.2
+
+opt_iters = 15
+opt_frequency = 3
+
+medium1_100_30_5
+ga_solver: {'num_of_formulae': 100, 'formula_num_of_clauses': 5, 'num_of_vars': 30, 'best_solution_sat': 23, 'average_solution_sat': 26.1, 'worst_solution_sat': 31, 'average_running_time': 1.4746002793312072, 'average_iters_till_best': 40.75}
+ma_ls_solver: {'num_of_formulae': 100, 'formula_num_of_clauses': 5, 'num_of_vars': 30, 'best_solution_sat': 23, 'average_solution_sat': 26.45, 'worst_solution_sat': 32, 'average_running_time': 7.754308450222015, 'average_iters_till_best': 58.2}
+ma_sa_solver: {'num_of_formulae': 100, 'formula_num_of_clauses': 5, 'num_of_vars': 30, 'best_solution_sat': 23, 'average_solution_sat': 26.4, 'worst_solution_sat': 30, 'average_running_time': 8.082682871818543, 'average_iters_till_best': 61.3}
+ma_rvns_solver: {'num_of_formulae': 100, 'formula_num_of_clauses': 5, 'num_of_vars': 30, 'best_solution_sat': 23, 'average_solution_sat': 27.7, 'worst_solution_sat': 31, 'average_running_time': 17.489778089523316, 'average_iters_till_best': 52.25}
+
+medium2_150_50_5
+ga_solver: {'num_of_formulae': 150, 'formula_num_of_clauses': 5, 'num_of_vars': 50, 'best_solution_sat': 34, 'average_solution_sat': 38.8, 'worst_solution_sat': 43, 'average_running_time': 2.6581632137298583, 'average_iters_till_best': 69.6}
+ma_ls_solver: {'num_of_formulae': 150, 'formula_num_of_clauses': 5, 'num_of_vars': 50, 'best_solution_sat': 37, 'average_solution_sat': 43.05, 'worst_solution_sat': 51, 'average_running_time': 15.259787499904633, 'average_iters_till_best': 93.45}
+ma_sa_solver: {'num_of_formulae': 150, 'formula_num_of_clauses': 5, 'num_of_vars': 50, 'best_solution_sat': 36, 'average_solution_sat': 41.85, 'worst_solution_sat': 45, 'average_running_time': 16.992418193817137, 'average_iters_till_best': 109.65}
+ma_rvns_solver: {'num_of_formulae': 150, 'formula_num_of_clauses': 5, 'num_of_vars': 50, 'best_solution_sat': 40, 'average_solution_sat': 45.05, 'worst_solution_sat': 52, 'average_running_time': 35.19961045980453, 'average_iters_till_best': 89.8}
+
+medium3_150_75_5
+ga_solver: {'num_of_formulae': 150, 'formula_num_of_clauses': 5, 'num_of_vars': 75, 'best_solution_sat': 21, 'average_solution_sat': 30.9, 'worst_solution_sat': 37, 'average_running_time': 3.4992462754249574, 'average_iters_till_best': 105.3}
+ma_ls_solver: {'num_of_formulae': 150, 'formula_num_of_clauses': 5, 'num_of_vars': 75, 'best_solution_sat': 29, 'average_solution_sat': 36.2, 'worst_solution_sat': 49, 'average_running_time': 18.94864342212677, 'average_iters_till_best': 129.3}
+ma_sa_solver: {'num_of_formulae': 150, 'formula_num_of_clauses': 5, 'num_of_vars': 75, 'best_solution_sat': 28, 'average_solution_sat': 36.55, 'worst_solution_sat': 46, 'average_running_time': 21.193169283866883, 'average_iters_till_best': 150.5}
+ma_rvns_solver: {'num_of_formulae': 150, 'formula_num_of_clauses': 5, 'num_of_vars': 75, 'best_solution_sat': 27, 'average_solution_sat': 38.95, 'worst_solution_sat': 49, 'average_running_time': 44.72447909116745, 'average_iters_till_best': 126.0}
+

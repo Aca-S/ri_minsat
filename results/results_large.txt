@@ -1,0 +1,33 @@
+num_of_generations = 200
+max_without_improvement = 70
+population_size = 100
+mutation_probability = 0.5
+elitism=0.3
+
+opt_iters = 15
+opt_frequency = 3
+
+large1_500_200_5
+ga_solver: {'num_of_formulae': 500, 'formula_num_of_clauses': 5, 'num_of_vars': 200, 'best_solution_sat': 126, 'average_solution_sat': 132.1, 'worst_solution_sat': 139, 'average_running_time': 19.590581393241884, 'average_iters_till_best': 191.7}
+ma_ls_solver: {'num_of_formulae': 500, 'formula_num_of_clauses': 5, 'num_of_vars': 200, 'best_solution_sat': 145, 'average_solution_sat': 154.8, 'worst_solution_sat': 161, 'average_running_time': 86.61828541755676, 'average_iters_till_best': 190.8}
+ma_sa_solver: {'num_of_formulae': 500, 'formula_num_of_clauses': 5, 'num_of_vars': 200, 'best_solution_sat': 142, 'average_solution_sat': 150.4, 'worst_solution_sat': 167, 'average_running_time': 87.13891851902008, 'average_iters_till_best': 196.7}
+ma_rvns_solver: {'num_of_formulae': 500, 'formula_num_of_clauses': 5, 'num_of_vars': 200, 'best_solution_sat': 150, 'average_solution_sat': 167.8, 'worst_solution_sat': 178, 'average_running_time': 206.9179441213608, 'average_iters_till_best': 189.8}
+
+
+
+
+num_of_generations = 350
+max_without_improvement = 70
+population_size = 100
+mutation_probability = 0.5
+elitism=0.3
+
+opt_iters = 15
+opt_frequency = 3
+
+large2_300_300_5
+ga_solver: {'num_of_formulae': 300, 'formula_num_of_clauses': 5, 'num_of_vars': 300, 'best_solution_sat': 34, 'average_solution_sat': 44.2, 'worst_solution_sat': 52, 'average_running_time': 18.793705224990845, 'average_iters_till_best': 272.0}
+ma_ls_solver: {'num_of_formulae': 300, 'formula_num_of_clauses': 5, 'num_of_vars': 300, 'best_solution_sat': 46, 'average_solution_sat': 51.3, 'worst_solution_sat': 61, 'average_running_time': 89.67782502174377, 'average_iters_till_best': 336.7}
+ma_sa_solver: {'num_of_formulae': 300, 'formula_num_of_clauses': 5, 'num_of_vars': 300, 'best_solution_sat': 39, 'average_solution_sat': 51.4, 'worst_solution_sat': 58, 'average_running_time': 89.85692863464355, 'average_iters_till_best': 329.3}
+ma_rvns_solver: {'num_of_formulae': 300, 'formula_num_of_clauses': 5, 'num_of_vars': 300, 'best_solution_sat': 51, 'average_solution_sat': 59.4, 'worst_solution_sat': 66, 'average_running_time': 227.04329853057862, 'average_iters_till_best': 340.6}
+
